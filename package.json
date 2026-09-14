@@ -1,0 +1,20 @@
+{
+  "name": "cells-react-angular-demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Demo: React y Angular como custom elements sobre OpenCells, con UI de Web Awesome.",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @cells/react && npm run build -w @cells/angular && npm run build -w @cells/shell",
+    "dev": "npm run build -w @cells/react && npm run build -w @cells/angular && npm run dev -w @cells/shell",
+    "build:react": "npm run build -w @cells/react",
+    "build:angular": "npm run build -w @cells/angular",
+    "build:shell": "npm run build -w @cells/shell",
+    "dev:shell": "npm run dev -w @cells/shell"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.3"
+  }
+}
