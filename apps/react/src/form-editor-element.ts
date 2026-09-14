@@ -19,7 +19,7 @@ const STYLES = `
 
 export class FormEditorElement extends HTMLElement {
   private root: Root | null = null;
-  private title: string | null = null;
+  private formTitle: string | null = null;
 
   static get observedAttributes(): string[] {
     return ['form-title'];
@@ -42,14 +42,14 @@ export class FormEditorElement extends HTMLElement {
   }
 
   attributeChangedCallback(_name: string, _oldValue: string | null, newValue: string | null): void {
-    this.title = newValue;
+    this.formTitle = newValue;
     this.render();
   }
 
   private render(): void {
     this.root?.render(
       createElement(FormEditor, {
-        initialTitle: this.title ?? undefined,
+        initialTitle: this.formTitle ?? undefined,
         onSchemaChange: (schema: FormSchema) => {
           this.dispatchEvent(
             new CustomEvent<FormSchema>('schema-change', {

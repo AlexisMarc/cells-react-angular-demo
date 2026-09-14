@@ -1,14 +1,20 @@
 import { defineConfig } from 'vite';
 
-const externals = ['@open-cells/core', '@awesome.me/webawesome'];
+const externals: Record<string, string> = {
+  '@open-cells/core': '/vendor/cells-core.js',
+  '@awesome.me/webawesome': '/vendor/webawesome.js',
+};
 
 export default defineConfig({
+  server: {
+    preTransformRequests: false,
+  },
   optimizeDeps: {
-    exclude: externals,
+    exclude: Object.keys(externals),
   },
   build: {
     rollupOptions: {
-      external: externals,
+      external: Object.keys(externals),
     },
   },
   plugins: [
@@ -16,8 +22,8 @@ export default defineConfig({
       name: 'externalize-cells-shared',
       enforce: 'pre',
       resolveId(source) {
-        if (externals.includes(source)) {
-          return { id: source, external: true };
+        if (externals[source]) {
+          return { id: externals[source], external: true };
         }
         return null;
       },

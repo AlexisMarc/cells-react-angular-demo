@@ -19,8 +19,8 @@ export const routes = [
     name: 'form',
     component: 'form-renderer-angular',
     action: async () => {
-      await loadVendorModule('angular/polyfills');
-      await loadVendorModule('angular/main');
+      await loadVendorModule('angular/browser/polyfills');
+      await loadVendorModule('angular/browser/main');
     },
   },
   {
@@ -29,13 +29,13 @@ export const routes = [
     component: 'preview-page',
     action: async () => {
       await loadVendorModule('form-editor-react');
-      await loadVendorModule('angular/polyfills');
-      await loadVendorModule('angular/main');
+      await loadVendorModule('angular/browser/polyfills');
+      await loadVendorModule('angular/browser/main');
       await import('../pages/preview/preview-page');
     },
   },
   {
-    path: '/(.*)',
+    path: '/404',
     name: 'not-found',
     component: 'not-found-page',
     action: () => import('../pages/not-found/not-found-page'),

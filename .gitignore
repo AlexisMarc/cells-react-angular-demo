@@ -5,3 +5,5 @@ dist/
 .DS_Store
 .angular/
 .vite/
+apps/shell/public/vendor/
+apps/angular/out-tsc/
