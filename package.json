@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "description": "Demo: React y Angular como custom elements sobre OpenCells, con UI de Web Awesome.",
+  "engines": {
+    "node": ">=22"
+  },
   "workspaces": [
     "apps/*"
   ],

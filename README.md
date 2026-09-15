@@ -61,6 +61,36 @@ npx vite preview --outDir apps/shell/dist
 
 O usa cualquier servidor estático sobre `apps/shell/dist`.
 
+## Despliegue en Vercel
+
+El proyecto incluye un `vercel.json` que deja el despliegue declarado en el repositorio
+(`buildCommand: npm run build`, `outputDirectory: apps/shell/dist`, `installCommand: npm ci`).
+
+### Desde GitHub (recomendado)
+
+1. Sube el repo a GitHub.
+2. En [Vercel](https://vercel.com) → *Add New… → Project* e importa el repositorio.
+3. Configura el proyecto:
+   - **Root Directory**: raíz del repositorio (por defecto, `.`).
+   - **Build Command**: `npm run build` (lo toma de `vercel.json`).
+   - **Output Directory**: `apps/shell/dist` (lo toma de `vercel.json`).
+   - **Node**: ≥ 22 (se fija con `engines.node` en el `package.json` raíz y `.nvmrc`).
+4. *Deploy*. Cada `git push` a la rama principal despliega automáticamente; los PR generan
+   previews.
+
+### Desde la CLI de Vercel
+
+```bash
+npm i -g vercel
+vercel login
+vercel --prod
+```
+
+La CLI usa la misma configuración de `vercel.json` y produce el mismo build.
+
+> Nota: la SPA usa *hash routing* (`#!`), por lo que no se necesitan reglas de *rewrite*; el
+> sitio se sirve como estático desde la raíz del dominio.
+
 ## Scripts
 
 | Comando                | Descripción                                                        |
