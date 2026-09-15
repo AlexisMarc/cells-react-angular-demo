@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cells × React × Angular</title>
     <link rel="stylesheet" href="/vendor/webawesome.css" />
+    <style>
+      #app-content > [state='inactive'],
+      #app-content > [state='cached'] {
+        display: none;
+      }
+    </style>
     <script type="importmap">
       {
         "imports": {
