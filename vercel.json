@@ -1,5 +1,4 @@
 {
-  "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "apps/shell/dist",
   "installCommand": "npm ci"
